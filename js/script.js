@@ -31,7 +31,7 @@ function displayResult(argPlayerMove, argComputerMove) {
   } else if (argPlayerMove == argComputerMove) {
     printMessage('Remis');
   } else {
-    printMessage('Przegrywasz :(');
+    printMessage('Przegrywasz');
   }
   printMessage('Zagrałem ' + argComputerMove + ', a Ty ' + argPlayerMove);
 }
