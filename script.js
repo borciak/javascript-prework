@@ -1,74 +1,63 @@
-var buttonTest;
-var buttonRock
-var buttonScissors
-var buttonPaper
-// tu bêd¹ wymienione pozosta³e zmienne guzików, np. buttonRock
-
-buttonTest = document.getElementById('button-test');
-buttonRock = document.getElementById('button-rock');
-buttonScissors = document.getElementById('button-scissors');
-buttonPaper = document.getElementById('button-paper');
-
-// tu bêd¹ kolejne linie kodu, w których do zmiennych bêd¹ przypisane elementy znalezione po id
-
-function buttonClicked(argButtonName){
-    clearMessages();
-    console.log(argButtonName + ' zosta³ klikniêty");
 var argComputerMove, argMoveId, argPlayerMove, computerMove, playerInput, playerMove, randomNumber;
 
 /**
  * Describe this function...
  */
 function getMoveName(argMoveId) {
-  console.log('wywo³ano funkcjê getMoveName z argumentem: ' + argMoveId);
+  console.log('wywoÅ‚ano funkcjÄ™ getMoveName z argumentem: ' + argMoveId);
   if (argMoveId == 1) {
-    return 'kamieñ';
-  } else {
-    printMessage('Nie znam ruchu o id ' + argMoveId + '. Zak³adam, ¿e chodzi³o o "kamieñ".');
-    return 'kamieñ';
-  }
-else if (argMoveId == 2) {
-    return 'no¿yce';
-}
-else if (argMoveId == 3) {
+    return 'kamieÅ„';
+  } else if (argMoveId == 2) {
     return 'papier';
+  } else if (argMoveId == 3) {
+    return 'noÅ¼yce';
+  } else {
+    printMessage('Nie znam ruchu o id ' + argMoveId + '. ZakÅ‚adam, Å¼e chodziÅ‚o o "kamieÅ„".');
+    return 'kamieÅ„';
+  }
 }
 
 /**
  * Describe this function...
  */
 function displayResult(argPlayerMove, argComputerMove) {
-  console.log('wywo³ano funkcjê displayResults z argumentami: ' + argPlayerMove + ', ' + argComputerMove);
-  if (argPlayerMove == 'papier' && argComputerMove == 'kamieñ') {
+  console.log('wywoÅ‚ano funkcjÄ™ displayResults z argumentami: ' + argPlayerMove + ', ' + argComputerMove);
+  if (argPlayerMove == 'papier' && argComputerMove == 'kamieÅ„') {
     printMessage('Wygrywasz!');
+  } else if (argPlayerMove == 'kamieÅ„' && argComputerMove == 'noÅ¼yce') {
+    printMessage('Wygrywasz!');
+  } else if (argPlayerMove == 'noÅ¼yce' && argComputerMove == 'papier') {
+    printMessage('Wygrywasz!');
+  } else if (argPlayerMove == argComputerMove) {
+    printMessage('Remis');
   } else {
     printMessage('Przegrywasz :(');
   }
-  else if (argPlayerMove == 'no¿yce' && argComputerMove == 'papier') {
-    printMessage('Wygrywasz!');
-  } else {
-    printMessage('Przegrywasz :(');
-  }
-  else if (argPlayerMove == 'kamieñ' && argComputerMove == 'no¿yce') {
-    printMessage('Wygrywasz!');
-  } else {
-    printMessage('Przegrywasz :(');
-  }
-  printMessage('Zagra³em ' + argComputerMove + ', a Ty ' + argPlayerMove);
+  printMessage('ZagraÅ‚em ' + argComputerMove + ', a Ty ' + argPlayerMove);
 }
-
-console.log('wybór ruchu gracza to: ' + playerInput);
-
 playerMove = argButtonName;
+randomNumber = Math.floor(Math.random() * 3 + 1);
+console.log('wybÃ³r ruchu gracza to: ' + playerInput);
 
-    // tu znajdzie siê ca³a dotychczasowa zawartoœæ pliku js/script.js
-    // czyli efekt æwiczenia z poprzedniego submodu³u
-    // z drobn¹ zmian¹ dot. zmiennej playerMove (wspomnieliœmy o tym powy¿ej)
+console.log('ruch gracza to: ' + playerMove);
+console.log('wylosowana liczba to: ' + randomNumber);
+computerMove = getMoveName(randomNumber);
+console.log('ruch komputera to: ' + computerMove);
+displayResult(playerMove, computerMove);
+
+
+var argButtonName, buttonPaper, buttonRock, buttonScissors, buttonTest, scissors;
+
+/**
+ * Describe this function...
+ */
+function buttonClicked(argButtonName) {
+  clearMessages();
+  console.log(argButtonName + ' zostaÅ‚ klikniÄ™ty');
 }
-
-buttonTest.addEventListener('click', function(){
-    buttonClicked('Test button')
-});
-
-// tu bêd¹ kolejne powi¹zania guzików z funkcj¹ buttonClicked
-// (ka¿da z innym argumentem)
+buttonRock = document.getElementById('button-rock');
+buttonRock.addEventListener('click', function(){ buttonClicked('kamieÅ„'); });
+buttonPaper = document.getElementById('button-paper');
+buttonPaper.addEventListener('click', function(){ buttonClicked('papier'); });
+buttonScissors = document.getElementById('button-scissors');
+buttonScissors.addEventListener('click', function(){ buttonClicked('noÅ¼yce'); });
